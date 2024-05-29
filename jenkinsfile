@@ -1,0 +1,21 @@
+pipeline{
+    agent any
+    stages{
+        stage ('print'){
+            steps{
+                echo "hello world"
+            }
+        }
+        stage ('scm') {
+            steps {
+                git 'https://github.com/aws-samples/eb-tomcat-snakes.git'
+
+            }
+        }
+        stage ('build') {
+            steps {
+                sh './build.sh'
+            }
+        }
+    }
+}
